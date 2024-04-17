@@ -1,3 +1,3 @@
-module github.com/flywithu/azurevision
+module github.com/flywithu/azure-golang
 go 1.21.9
 
