@@ -1,3 +1,3 @@
 module github.com/flywithu/azure-golang
-go 1.18.1
+go 1.18
 
