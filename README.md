@@ -1,6 +1,13 @@
 Below is a sample code for this library.
 
 ```
+go mod init azure-golang
+go mod tidy
+export VISION_KEY="YOURKEY"
+go run 
+```
+
+```
 package main
 
 import (
@@ -8,20 +15,44 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"net/http"
+	"io"
+
 )
 
 func main() {
 	VISION_ENDPOINT := "https://flywithufreevision.cognitiveservices.azure.com"
 	VISION_KEY := os.Getenv("VISION_KEY")
-	filePath := "/mnt/mypool/python_picture/filter_pic_gotest/0000/00/00000000-7deb47bf83b0fdf78259e9a8b47ac986.JPG"
 
+	filePath:="temp.jpg"
 	// URLs for image analysis
-	// landmarkImageURL := "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg"
+	landmarkImageURL := "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg"
 	kitchenImageURL := "https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/images/windows-kitchen.jpg"
 	eiffelTowerImageURL := "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Eiffel_Tower_20051010.jpg/1023px-Eiffel_Tower_20051010.jpg"
 	redShirtLogoImageURL := "https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--08fdf594-c963-43c8-b686-d4ba06727971/noticia_madridistas_hp.app.png?preferwebp=true&width=1440"
 
 	client := vision.ComputerVisionClient(VISION_ENDPOINT, VISION_KEY)
+
+	log.Println("++++++++++++++++++++++++++++++++++++++++++++++++")
+	log.Println("Download File")
+	resp, err := http.Get(landmarkImageURL)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	out, err := os.Create(filePath)
+	if err != nil {
+		panic(err)
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, resp.Body)
+	if err != nil {
+		panic(err)
+	}
+
+
 
 	// Tagging an image
 	log.Println("++++++++++++++++++++++++++++++++++++++++++++++++")
