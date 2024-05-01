@@ -129,3 +129,37 @@ func main() {
 }
 
 ```
+
+# RESULT
+```
+2024/05/01 20:19:08 ++++++++++++++++++++++++++++++++++++++++++++++++
+2024/05/01 20:19:08 Download File
+2024/05/01 20:19:09 ++++++++++++++++++++++++++++++++++++++++++++++++
+2024/05/01 20:19:09 Image Tagging
+Tag: outdoor (Confidence: 0.99)
+Tag: building (Confidence: 0.99)
+Tag: sky (Confidence: 0.98)
+2024/05/01 20:19:13 ++++++++++++++++++++++++++++++++++++++++++++++++
+2024/05/01 20:19:13 Image Description
+Description Tag: building
+Description Tag: outdoor
+Caption: an ancient city with many ruins with Colosseum in the background (Confidence: 0.34)
+2024/05/01 20:19:14 ++++++++++++++++++++++++++++++++++++++++++++++++
+2024/05/01 20:19:14 Object Detection
+Object: kitchen appliance (Confidence: 0.50)
+Object: computer keyboard (Confidence: 0.51)
+Object: Laptop (Confidence: 0.85)
+Parent Object: computer (Confidence: 0.85)
+2024/05/01 20:19:15 ++++++++++++++++++++++++++++++++++++++++++++++++
+2024/05/01 20:19:15 Landmark Analysis
+Category: {building_ 0.83203125 0xc0001f79b0}
+Landmark: Eiffel Tower
+2024/05/01 20:19:16 Analyze - Brands
+Brand : [{HP 0.603 {569 586 77 71}}]
+Brand Tag: {person 0.987419068813324}
+Brand Tag: {clothing 0.9757296442985535}
+Brand Tag: {sky 0.9699560403823853}
+
+
+
+```
